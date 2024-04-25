@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Form = () => {
     return (
@@ -11,21 +12,22 @@ const Form = () => {
             <form className=''>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Full Name</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Full Name" aria-describedby="emailHelp"/>
+                    <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Full Name" aria-describedby="emailHelp"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter Email" aria-describedby="emailHelp"/>
+                    <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Email" aria-describedby="emailHelp"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Phone</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter Phone" aria-describedby="emailHelp"/>
+                    <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Phone" aria-describedby="emailHelp"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter Address" aria-describedby="emailHelp"/>
+                    <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Address" aria-describedby="emailHelp"/>
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Save</button>
+                <Link className="link" to='contacts'>or get back to contacts</Link>
             </form>
         </div>
     )
