@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalContextProvider';
 
-const Form = () => {
+const Form = ( sendContact ) => {
+    const {store} = useContext(GlobalContext)
+
+
     return (
         <div className='container'>
             <div className='row' >
                 <div className='col-md-12 d-flex justify-content-center'>
-            <h1>Add New Contact</h1>
+            <h1>Add New Contact</h1> 
             </div>
             </div>
-            <form className=''>
+            <form onSubmit={sendContact}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Full Name</label>
                     <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Full Name" aria-describedby="emailHelp"/>
