@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContextProvider';
 
 const Form = ( sendContact ) => {
-    const {store} = useContext(GlobalContext)
+    
+    const {store , actions} = useContext(GlobalContext)
 
 
     return (

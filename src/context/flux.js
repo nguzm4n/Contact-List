@@ -1,9 +1,14 @@
 const getState = () => {
     return {
         store: {
-            saludo:'hola'
+            name: 'Mugen Jin',
+            address: 'Tokyo Japan',
+            phone: '4655273',
+            email: 'notanemail@notdomain.com'
         },
-        actions: {}
+        actions: {
+
+        }
     }
 }
 export default getState

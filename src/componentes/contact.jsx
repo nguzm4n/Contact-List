@@ -2,6 +2,9 @@ import React from 'react'
 import imagenEjemplo from '../imagenes/images.png'
 import { MdDelete } from "react-icons/md";
 import { RiEditFill } from "react-icons/ri";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhoneFlip } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 import '../styles/contact.css'
 
 
@@ -22,9 +25,9 @@ const Contact = ({ name, address, phone, email , editContact, deleteContact }) =
               </div>
               <div className="card-body">
                 <h5 className="card-title">{name}</h5>
-                <h5>{address}</h5>
-                <h5>{phone}</h5>
-                <h5>{email}</h5>
+                <h5><FaLocationDot /> {address}</h5>
+                <h5><FaPhoneFlip /> {phone}</h5>
+                <h5><MdEmail /> {email}</h5>
               </div>
             </div>
           </div>

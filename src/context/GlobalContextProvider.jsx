@@ -5,6 +5,8 @@ import getState from './flux'
 export const GlobalContext = createContext(null)
 
 const GlobalContextProvider = ({ children }) => {
+
+
   const [state, setState] = useState(getState({
     getStore:() => state.store,
     getActions: () => state.actions,

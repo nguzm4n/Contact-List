@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../styles/contacts.css'
 import { Link } from 'react-router-dom';
 import Contact from './contact';
+import { GlobalContext } from '../context/GlobalContextProvider';
 
 
 const Contacts = () => {
 
-  
+  const {store, actions} = useContext(GlobalContext)
 
   return (
     <>
@@ -15,7 +16,12 @@ const Contacts = () => {
     <Link type="button" className="btn btn-success" to="/">Add New Contact</Link> 
     </div>
     </div>
-      <Contact />
+      <Contact 
+      name={store.name}
+      address={store.address}
+      phone={store.phone}
+      email={store.email}
+      />
     </>
   )
 }
