@@ -10,6 +10,10 @@ import '../styles/contact.css'
 
 
 const Contact = ({ name, address, phone, email , editContact, deleteContact }) => {
+
+
+
+  
   return (
     <div>
         <div className='d-flex justify-content-center'>

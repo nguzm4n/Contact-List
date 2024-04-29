@@ -8,16 +8,17 @@ const GlobalContextProvider = ({ children }) => {
 
 
   const [state, setState] = useState(getState({
-    getStore:() => state.store,
+    getStore: () => state.store,
     getActions: () => state.actions,
-    setStore: (updateStore) => setState({
-      store:Object.assign(state.store, updateStore),
-      actions: {...state.actions}
-    })
+    setStore: (updateStore = {}) => setState(prevState => ({
+      ...prevState,
+      store: Object.assign(prevState.store, updateStore),
+      actions: { ...prevState.actions }
+    }))
   }))
 
   useEffect(() => {
-
+    state.actions.getContacts();
   }, [])
 
   return (
