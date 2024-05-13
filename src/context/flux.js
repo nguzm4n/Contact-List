@@ -47,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       sendContact: (event, datos) => {
         event.preventDefault();
-
+       
         const url = 'https://playground.4geeks.com/contact/agendas/nicolas/contacts';
         const options = {
           method: "POST",
@@ -69,11 +69,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(datos => {
             const { contactos } = getStore()
             setStore({ contactos: contactos.concat(datos) })
-
+            const { cleanForm } = getActions()
+            cleanForm()
             console.log('Contacto Agregado', datos);
             ;
           })
           .catch(error => console.error('Error al agregar tarea:', error));
+      },
+
+      editContact: () => {
+        
+      },
+
+      cleanForm: () => {
+        
       }
 
     }

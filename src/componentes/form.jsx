@@ -13,7 +13,12 @@ const Form = () => {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
 
-   
+   const handleSubmit = (e) => {
+    e.preventDefault()
+    const datos = { fullName, email, phone, address }
+    actions.sendContact(e, datos)
+    cleanForm()
+   }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,6 +39,13 @@ const Form = () => {
             break;
     }}
 
+
+    const cleanForm = () => {
+      setFullName("")
+      setEmail("")
+      setPhone("")
+      setAddress("")
+    }
   
 
   return (
@@ -43,7 +55,7 @@ const Form = () => {
           <h1>Add New Contact</h1>
         </div>
       </div>
-      <form onSubmit={(e) => actions.sendContact(e,{fullName, email, phone, address})}>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Full Name</label>
           <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Full Name" name="fullName" onChange={handleInputChange} value={fullName} aria-describedby="emailHelp" />
