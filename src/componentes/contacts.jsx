@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../styles/contacts.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Contact from './contact';
 import { GlobalContext } from '../context/GlobalContextProvider';
 
@@ -8,7 +8,18 @@ import { GlobalContext } from '../context/GlobalContextProvider';
 const Contacts = () => {
 
 
+
+  const navigate = useNavigate()
   const { store, actions } = useContext(GlobalContext);
+
+  useEffect(() => {
+
+    actions.getContacts
+  }, [store.contactos])
+
+  useEffect(() => {
+    if (store.contactID !== null) { navigate("/") }
+  },)
 
   return (
     <>
@@ -26,8 +37,12 @@ const Contacts = () => {
           phone={contacto.phone}
           email={contacto.email}
           deleteContact={() => actions.deleteContact(contacto.id)}
+          editContact={() => actions.editarContacto(contacto.id)}
         />
       ))}
+
+
+   
 
     </>
   )

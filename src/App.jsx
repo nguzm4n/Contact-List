@@ -4,6 +4,7 @@ import Form from './componentes/form'
 import Contacts from './componentes/contacts'
 import Notfound from './componentes/Notfound'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle'
 import './App.css'
 
 

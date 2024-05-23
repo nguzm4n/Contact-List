@@ -20,6 +20,8 @@ const Form = () => {
     cleanForm()
    }
 
+
+   const idContacto = store.contactID
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     switch (name) {
@@ -39,6 +41,14 @@ const Form = () => {
             break;
     }}
 
+    const handleEdit = (e) => {
+      e.preventDefault()
+      const datos = { fullName, email, phone, address }
+      const id = store.contactID
+      actions.editContact(e, datos, id)
+      cleanForm()
+
+    }
 
     const cleanForm = () => {
       setFullName("")
@@ -46,7 +56,9 @@ const Form = () => {
       setPhone("")
       setAddress("")
     }
-  
+    const cleanStore = () => {
+      
+    }
 
   return (
     <div className='container'>
@@ -55,7 +67,7 @@ const Form = () => {
           <h1>Add New Contact</h1>
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={!!idContacto ? handleEdit : handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Full Name</label>
           <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Full Name" name="fullName" onChange={handleInputChange} value={fullName} aria-describedby="emailHelp" />
@@ -73,8 +85,11 @@ const Form = () => {
           <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Address" name="address" onChange={handleInputChange} value={address} aria-describedby="emailHelp" />
         </div>
         <button type="submit" className="btn btn-primary w-100">Save</button>
-        <Link className="link" to='contacts'>or get back to contacts</Link>
+        <Link className="link" to='contacts' onClick={() => {}}>or get back to contacts</Link>
       </form>
+
+
+      
     </div>
   )
 }

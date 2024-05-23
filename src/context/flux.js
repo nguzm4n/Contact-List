@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      contactos: []
+      contactos: [],
+      contactID: null
     },
     actions: {
       getContacts: async () => {
@@ -77,12 +78,52 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch(error => console.error('Error al agregar tarea:', error));
       },
 
-      editContact: () => {
-        
+      editContact: (event, datos, id) => {
+        try {
+          const url = `https://playground.4geeks.com/contact/agendas/nicolas/contacts/${id}`
+          const options = {
+            method: "PUT",
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: datos.fullName,
+            phone: datos.phone,
+            email: datos.email,
+            address: datos.address
+
+          })
+          }
+          fetch(url, options)
+          .then(response => response.json())
+          .then(datos => {
+            const { store } = getStore()
+            setStore({
+              ...store,
+              contactID:null
+            })
+            const { cleanForm } = getActions()
+            const { getContacts } = getActions()
+            getContacts()
+            cleanForm()
+            console.log('Contacto Modificado', datos);
+            ;
+          })
+        } catch (error) {
+          
+        }
       },
 
       cleanForm: () => {
         
+      },
+      editarContacto: (id) => {
+        const { store } = getStore()
+        setStore({
+          ...store,
+          contactID:id
+        })
       }
 
     }
